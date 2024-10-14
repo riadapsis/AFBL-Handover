@@ -201,8 +201,8 @@ Table of Contents	2
  
 Technical Documentation: Microservices Architecture
 Project: Akij SFA Solution
-Backend: NodeJS (NestJS)
-Frontend: ReactJS (NextJS)
+Backend: NodeJS
+Frontend: ReactJS
 Mobile App: Flutter
 ________________________________________
 1. Introduction
@@ -219,17 +219,15 @@ Purpose of Each Microservice
 8.	Dashboard Service: Manages all recurring tasks for calculating dashboard data and other features related to the dashboard, providing valuable insights and analytics.
 9.	Survey Service: Manages all features related to digital learning and surveys, enabling the creation, distribution, and analysis of surveys.
 10.	Product Service: Manages product-related APIs, handling operations such as adding new products, updating product details, and retrieving product information.
-Interaction Between Microservices
-•	API Gateway receives client requests and routes them to the appropriate microservice.
-•	Authentication Service verifies user credentials and issues tokens used by other services to authenticate requests.
-•	Stock Management Service updates stock levels and notifies the Order Service when stock changes.
+
 Importance in Ensuring a Scalable, Maintainable, and Modular Application
 •	Scalability: Each microservice can be scaled independently based on its load. For example, the App Service can be scaled up during peak hours without affecting other services.
 •	Maintainability: Smaller codebases are easier to manage. Each microservice can be developed, tested, and deployed independently, reducing the complexity of the overall system.
 •	Modularity: Microservices promote a modular approach where each service focuses on a specific business capability. This modularity allows teams to work on different services simultaneously without interfering with each other.
 •	Fault Isolation: Failures in one microservice do not necessarily bring down the entire system. For example, if the Survey Service fails, the core functionality of the application remains unaffected.
-•	Technology Diversity: Different microservices can be built using different technologies that are best suited for their specific tasks, allowing for greater flexibility and optimization.
-By breaking down the application into smaller, manageable pieces, microservices architecture helps in building robust, scalable, and maintainable systems.
+•	Technology Diversity: Different microservices can be built using different technologies that are best suited for their specific tasks, allowing for greater flexibility and optimization. By breaking down the application into smaller, manageable pieces, microservices architecture helps in building robust, scalable, and maintainable systems.
+
+
 ________________________________________
 2. System Architecture Overview
 2.1 Microservices Architecture
@@ -245,33 +243,11 @@ o	Microservices are often designed around business domains, ensuring that each s
 o	Each microservice manages its own database, which helps in maintaining data consistency and integrity within the service.
 4.	API Gateway:
 o	An API Gateway often sits in front of the microservices, handling requests from clients and routing them to the appropriate service.
-Deployment of Microservices
-1.	Containerization:
-o	Microservices are typically deployed in containers (e.g., Docker), which encapsulate the service and its dependencies, ensuring consistency across different environments.
-2.	Orchestration:
-o	Tools like Kubernetes are used to manage the deployment, scaling, and operation of containerized applications, ensuring that services are resilient and can recover from failures.
-3.	Continuous Integration/Continuous Deployment (CI/CD):
-o	Automated pipelines are set up to build, test, and deploy microservices, enabling rapid and reliable delivery of new features and updates.
-Benefits of Microservices
-1.	Scalability:
-o	Each microservice can be scaled independently based on its load and performance requirements. This allows for more efficient use of resources compared to scaling a monolithic application.
-2.	Modularity:
-o	Microservices promote a modular architecture where each service is developed and maintained independently. This modularity makes it easier to manage and update individual services without affecting the entire system.
-3.	Fault Isolation:
-o	Since microservices are independent, a failure in one service does not necessarily impact other services. This isolation improves the overall resilience and reliability of the application.
-4.	Technology Diversity:
-o	Different microservices can be built using different technologies and programming languages, allowing teams to choose the best tools for each specific task.
-5.	Faster Time to Market:
-o	Independent development and deployment of microservices enable teams to release new features and updates more quickly, responding faster to market demands and user feedback.
-6.	Improved Maintainability:
-o	Smaller, focused codebases are easier to understand, test, and maintain. This reduces technical debt and improves the overall quality of the software.
-In summary, microservices architecture offers significant advantages in terms of scalability, modularity, and fault isolation, making it a popular choice for building large, complex applications that need to be agile and resilient.
 ________________________________________
 3. Microservices Breakdown
 
 3.1 Service 1: Authentication Service
 3.3.1 Auth Module Overview
-
 Overview
 The AuthModule in this microservice is responsible for managing user authentication and authorization processes. It includes several key components and endpoints to handle login, logout, and token refresh functionalities.
 Key Responsibilities
@@ -281,13 +257,11 @@ Token Management: Handles the generation, validation, and refreshing of JWT toke
 Key Endpoints
 POST /auth/login: Authenticates a user and returns an access token.
 POST /auth/logout: Logs out the authenticated user.
-POST /auth/refreshtoken: Generates a new access token using a refresh token.
-
 3.2 Service 2: App Service
 3.2.1 Asset Requisition Module Overview
 
 Overview
-The Asset Requisition Module is a crucial component of a microservice architecture designed to manage the lifecycle of assets within an organization. This module handles the creation, installation, pull-out, and approval processes for asset requisitions. It ensures that assets are efficiently allocated, tracked, and maintained across various outlets or departments.
+The Asset Requisition Module is a crucial component of the system architecture designed to manage the lifecycle of assets within an organization. This module handles the creation, installation, pull-out, and approval processes for asset requisitions. It ensures that assets are efficiently allocated, tracked, and maintained across various outlets or departments.
 
 Key Responsibilities
 Asset Requisition Management: Handle the creation, installation, pull-out, and approval processes for asset requisitions.
@@ -299,17 +273,13 @@ POST /asset-requisition/new-requisition: Creates a new asset requisition.
 
 POST /asset-requisition/new-installation: Handles the installation of new assets.
 
-POST /asset-requisition/pull-out: Processes the pull-out of assets from outlets.
-
 GET /asset-requisition/get-outlet-asset-list: Retrieves a list of assets for a specific outlet.
-
-GET /asset-requisition/get-outlet-asset-requisition/:id: Retrieves details of a specific asset requisition by its ID.
 
 3.2.2 Attendance Module Overview
 
 Overview
 
-The Attendance Module is a vital part of a microservice architecture designed to manage employee attendance within an organization. This module handles the check-in and check-out processes, ensuring accurate tracking of employee working hours and attendance records. It also manages the upload and storage of clock-in and clock-out images for verification purposes.
+The Attendance Module is a vital part of this service that designed to manage employee attendance within an organization. This module handles the check-in and check-out processes, ensuring accurate tracking of employee working hours and attendance records. It also manages the upload and storage of clock-in and clock-out images for verification purposes.
 
 Key Responsibilities
 
@@ -322,7 +292,6 @@ Attendance Reporting: Provide detailed attendance records and reports for employ
 Key Endpoints
 
 POST /attendance: Handles employee check-in with image upload.
-PATCH /attendance: Handles employee check-out with image upload.
 GET /attendance: Retrieves attendance records based on query parameters.
 GET /attendance/tsm: Retrieves attendance records for TSM based on query parameters.
 
@@ -336,11 +305,9 @@ Password Management: Provide functionalities for changing and resetting password
 Key Endpoints
 POST /ff-auth/login: Handles user login and returns a JWT token.
 POST /ff-auth/change-password: Allows users to change their password.
-POST /ff-auth/refresh-token: Refreshes the JWT token for an authenticated session.
-
 3.2.4 Bill Module Overview
 Overview
-The Bill Module is an essential part of a microservice architecture designed to manage billing processes within an organization. This module handles the retrieval and disbursement of outdoor bills, ensuring accurate and efficient billing operations.
+The Bill Module is designed to manage billing processes within an organization. This module handles the retrieval and disbursement of outdoor bills, ensuring accurate and efficient billing operations.
 Key Responsibilities
 Bill Retrieval: Handle the retrieval of outdoor bills based on query parameters.
 Bill Disbursement: Manage the disbursement of outdoor bills by updating their status.
@@ -370,7 +337,6 @@ Leave Querying: Allow querying of leave data based on various parameters.
 Key Endpoints
 POST /leave: Creates a new leave request.
 GET /leave: Retrieves leave requests based on query parameters.
-GET /leave/calendar: Retrieves leave data in a calendar format.
 
 3.2.7 Localization Module Overview
 Overview
@@ -402,8 +368,6 @@ PJP Management: Manage the creation, retrieval, and updating of PJP (Planned Jou
 Key Endpoints
 POST /movement: Creates a new movement record.
 GET /movement: Retrieves movement records based on query parameters.
-GET /movement/pjp: Retrieves PJP records based on query parameters.
-PATCH /movement/update_pjp: Updates PJP records.
 
 3.2.10 Promotion Module Overview
 Overview
@@ -426,19 +390,6 @@ Bulk Retailer Management: Handle the bulk disabling of retailer records based on
 Key Endpoints
 POST /retailer: Creates a new retailer record with associated images.
 PUT /retailer/bulk-disable: Bulk disables retailer records based on provided outlet codes.
-PUT /retailer/:outlet_code: Updates an existing retailer record with new information and images.
-
-3.2.12 RTC Module Overview
-Overview
-The RTC (Digital Learning) Module is an essential part of a microservice architecture designed to manage digital learning related data. This module handles the saving of RTC surveys, synchronization of RTC RAG scores, and uploading of survey scope files, ensuring efficient management and tracking of RTC data.
-Key Responsibilities
-RTC Survey Management: Handle the saving of RTC survey data.
-RTC RAG Score Synchronization: Synchronize RTC RAG scores based on department, section, and date.
-Survey Scope File Upload: Manage the upload and storage of survey scope files.
-Key Endpoints
-POST /rtc/save-survey: Saves RTC survey data.
-GET /rtc/sync-rtc-rag-score: Synchronizes RTC RAG scores based on query parameters.
-POST /rtc/upload-survey-scope: Uploads survey scope files with specific configurations.
 
 3.3.13 Sales Module Overview
 Overview
@@ -454,9 +405,6 @@ Key Endpoints
 POST /sales/save-sales-data: Saves sales data for an outlet.
 POST /sales/save-delivery-data: Saves delivery data for an outlet.
 GET /sales/get-outlet-wise-sale-data: Retrieves sales data for a specific outlet.
-POST /sales/save-unsold-sales-data: Saves unsold sales data.
-POST /sales/stock-check: Manages stock check operations.
-POST /sales/try-before-you-buy: Handles data for the "Try Before You Buy" program.
 
 3.3.14 Section Change Module Overview
 Overview
@@ -467,36 +415,19 @@ Request Status Retrieval: Retrieve the status of section change requests based o
 Key Endpoints
 POST /section-change: Creates a new section change request.
 GET /section-change/request-status: Retrieves the status of section change requests based on query parameters.
-
-3.3.15 Static File Module Overview
-Overview
-The Static File Module is a crucial part of a microservice architecture designed to manage the retrieval of static files within an organization. This module handles the serving of static files from various directories, ensuring efficient access and management of these files.
-Key Responsibilities
-Static File Retrieval: Handle the retrieval of static files based on query parameters and path variables.
-File Listing: Provide a list of all available static files for synchronization purposes.
-Key Endpoints
-GET /static-file: Retrieves a static file based on query parameters.
-GET /static-file/app-sync-file-assets: Retrieves a list of all available static files for synchronization purposes.
-GET /static-file/retailer/:folder_name/:fileId: Retrieves a retailer-specific static file based on folder name and file ID.
-GET /static-file/:folder_name/:fileId: Retrieves a static file based on folder name and file ID.
-
 3.3.16 Sync File Module Overview
 Overview
 The Sync File Module is a crucial part of a microservice architecture designed to manage the synchronization of files within an organization. This module handles the creation, updating, and retrieval of sync files, ensuring efficient and accurate synchronization of data.
 Key Responsibilities
 Sync File Creation: Handle the creation of new sync files.
-Mid-Day Configuration Update: Manage the updating of mid-day configuration data.
 Sync File Retrieval: Retrieve sync file data based on provided criteria.
 Retailer List Management: Retrieve retailer lists for specific sections and sales dates.
 Pre-Order Management: Retrieve available pre-order data for specific sales representatives and dates.
 Key Endpoints
 POST /sync-file: Creates a new sync file.
-POST /sync-file/mid-day-configuration-update: Updates mid-day configuration data.
-POST /sync-file/save-sync-file: Saves sync file data for web entry.
 GET /sync-file/get-retailer-list/:sectionId/:salesDate: Retrieves retailer lists for specific sections and sales dates.
 GET /sync-file/parents: Retrieves SKU-wise parent data.
 GET /sync-file/auto-generate-sync-file: Automatically generates a sync file.
-GET /sync-file/get-available-pre-order/:srId/:salesDate: Retrieves available pre-order data for specific sales representatives and dates.
 
 3.3 Service 3: Master Data Service
 3.3.1 Asset Management Module Overview
@@ -513,8 +444,6 @@ Key Endpoints
 - POST /assign-asset: Assigns an asset to a specific entity or user based on the provided details.
 - GET /get-requisition-list: Retrieves a list of asset requisitions based on specific query parameters.
 - GET /reject-requisition/:id: Rejects an asset requisition by its ID.
-- POST /asset-pull-out: Handles the process of pulling out assets from inventory based on the provided details.
-
 3.3.2 Bill Module Overview
 
 Overview
@@ -524,14 +453,11 @@ Key Responsibilities
 - Retrieve Bill Categories: Allows retrieval of existing bill categories.
 - Create Outdoor Bills: Supports the creation of outdoor bills, capturing necessary billing details.
 - Retrieve Outdoor Bills: Enables retrieval of outdoor bills based on specific query parameters, such as department ID and date.
-- Update Bills: Facilitates the updating of existing bill information.
 Key Endpoints
 - POST /bill/electricity-bill-category: Creates a new electricity bill category based on the provided details.
 - GET /bill/electricity-bill-category: Retrieves the list of existing electricity bill categories.
 - POST /bill/outdoor-bill: Creates a new outdoor bill with the provided billing details.
 - GET /bill/outdoor-bill: Retrieves outdoor bills based on specific query parameters, such as department ID and date.
-- PATCH /bill/outdoor-bill: Updates an existing outdoor bill with the provided details.
-
 3.3.3 Common Module Overview
 Overview
 The common-module is responsible for handling common operations within the microservice. It includes functionalities for retrieving master categories, fetching SBU (Strategic Business Unit) lists, and saving user activity logs.
@@ -544,20 +470,6 @@ Key Endpoints
 - GET /common-module/master-categories: Retrieves master categories based on the provided slug.
 - GET /common-module/sbu-list: Fetches the list of Strategic Business Units.
 - POST /common-module/save-user-activity-log: Saves a user activity log with the provided details.
-
-3.3.4 Cron Job Module Overview
-Overview
-The cron-job module is responsible for managing scheduled tasks and background jobs within the microservice. It includes functionalities for synchronizing shipment and point information, and preparing sales data by distribution point and section.
-Key Responsibilities
-- Synchronize Shipment Information: Provides functionality to synchronize point shipment information.
-- Synchronize Point Information: Allows synchronization of point information.
-- Prepare Sales Data: Supports the preparation of sales data by department and section based on a given date.
-Key Endpoints
-- GET /cron-job/sync-point-shipment-info: Synchronizes point shipment information.
-- GET /cron-job/sync-point-info: Synchronizes point information.
-- GET /cron-job/prepear-sales-by-dep/:date: Prepares sales data by department for a given date.
-- GET /cron-job/prepear-trans-sales-by-section/:date: Prepares sales data by section for a given date.
-
 3.3.5 Field Force Module Overview
 Overview
 The field-force module is responsible for managing operations related to field force personnel within the microservice. It includes functionalities for saving field force information, retrieving sales representative and supervisor information, and updating field force details.
@@ -566,11 +478,6 @@ Key Responsibilities
 - Retrieve Sales Representative and Supervisor Information: Allows retrieval of sales representative and supervisor information based on department and SBU (Strategic Business Unit) IDs.
 - Update Field Force Details: Supports updating the details of existing field force personnel.
 - Disable Field Force: Provides functionality to disable a field force personnel by their ID.
-- Retrieve Section-Wise Field Force List: Allows retrieval of field force personnel based on sections.
-- Assign Routes to Field Force: Supports assigning routes to field force personnel.
-- Unassign Routes from Field Force: Provides functionality to remove field force personnel from assigned routes.
-- Export Field Force Data: Allows exporting field force data based on specific query parameters.
-- Reset Field Force Password: Supports resetting the password for field force personnel.
 Key Endpoints
 - POST /master-entry/field-force/save-field-force: Saves new field force personnel information based on the provided details.
 - GET /master-entry/field-force/get-field-force-list: Retrieves a list of field force personnel based on query parameters.
@@ -585,16 +492,11 @@ Retrieve Leave Movements: Allows retrieval of leave movement records based on sp
 Update Leave Details: Supports updating the details of existing leave records.
 Update Movement Details: Supports updating the details of existing movement records.
 Bulk Leave Upload: Provides functionality to upload leave records in bulk.
-Approve or Reject Ta/Da: Manages the approval or rejection of travel allowances (Ta/Da).
 Download Leave Balance Sample: Allows downloading a sample file for leave balance uploads.
-Delete Attendance Records: Supports deleting attendance records based on specific criteria.
 Key Endpoints
 POST /leave-movement: Creates a new leave movement record based on the provided details.
 GET /leave-movement: Retrieves leave movement records based on specific query parameters.
-PATCH /leave-movement/leave/:id: Updates the details of an existing leave record by its ID.
 PATCH /leave-movement/movement/:id: Updates the details of an existing movement record by its ID.
-POST /leave-movement/bulk-upload: Uploads leave records in bulk using a provided file.
-
 3.3.7 Location List Module Overview
 Overview
 The location-list module is responsible for managing location-related operations within the microservice. It includes functionalities for retrieving categories by type, creating sections, disabling routes, adding new routes to sections, and fetching section and point geo-location data.
@@ -612,30 +514,23 @@ POST /location-list/section: Creates a new section within the location list.
 DELETE /location-list/route/:section_id: Disables a route within a specific section by its ID.
 PATCH /location-list/section: Adds a new route to an existing section based on the provided details.
 GET /location-list/section/:id: Retrieves section data by its ID.
-GET /location-list/section-list-tree: Retrieves a hierarchical list of sections based on specific query parameters.
-GET /location-list/point-geo-location: Retrieves geographical location data for points based on specific query parameters.
-
 3.3.8 Location Tree Module Overview
 Overview
 The location-tree module is responsible for managing hierarchical location data within the microservice. It includes functionalities for retrieving location trees, route lists, active route lists, and section lists.
 Key Responsibilities
 Retrieve Location Tree: Provides functionality to retrieve a hierarchical tree structure of locations.
-Retrieve Route Lists: Allows retrieval of route lists based on specific query parameters.
-Retrieve Active Route Lists: Supports fetching active route lists.
 Retrieve Section Lists: Provides functionality to retrieve lists of sections.
 Retrieve All Locations: Allows retrieval of all location data.
 Retrieve Location by ID: Supports fetching location data by its ID.
 Key Endpoints
 POST /location-tree: Retrieves a hierarchical tree structure of locations based on the provided details.
-GET /location-tree/get-route-list: Retrieves route lists based on specific query parameters.
-GET /location-tree/get-active-route-list: Retrieves active route lists based on specific query parameters.
 GET /location-tree/get-section-list: Retrieves lists of sections based on specific query parameters.
 GET /location-tree: Retrieves all location data.
 GET /location-tree/:id: Retrieves location data by its ID.
 
-3.3.9 Maintainance Module Overview
+3.3.9 Maintenance Module Overview
 Overview
-The maintainance module is responsible for managing maintenance operations within the microservice. It includes functionalities for creating maintenance requests, retrieving maintenance request lists, viewing maintenance details, and assigning users to maintenance tasks.
+The maintenance module is responsible for managing maintenance operations within the microservice. It includes functionalities for creating maintenance requests, retrieving maintenance request lists, viewing maintenance details, and assigning users to maintenance tasks.
 Key Responsibilities
 Create Maintenance Requests: Provides functionality to create new maintenance requests.
 Retrieve Maintenance Request Lists: Allows retrieval of maintenance request lists based on specific query parameters.
@@ -646,31 +541,6 @@ Key Endpoints
 POST /maintainance/create-new-request: Creates a new maintenance request based on the provided details.
 GET /maintainance/request-list: Retrieves a list of maintenance requests based on specific query parameters.
 GET /maintainance/view-details/:id: Retrieves detailed information about a specific maintenance request by its ID.
-GET /maintainance/maintainance-user-list/:dep_id: Retrieves a list of users available for maintenance tasks based on department ID.
-POST /maintainance/assign-user: Assigns a user to a specific maintenance task based on the provided details.
-
-3.3.10 Menu Module Overview
-Overview
-The menu module is responsible for managing menu items within the microservice. It includes functionalities for creating, retrieving, updating, and deleting menu items, ensuring that the menu structure is maintained and updated as needed.
-Key Responsibilities
-Retrieve All Menu Items: Provides functionality to retrieve a list of all menu items.
-Retrieve Dynamic Menu Items: Allows retrieval of menu items based on specific query parameters.
-Create Menu Items: Supports the creation of new menu items.
-Update Menu Items: Provides functionality to update existing menu items.
-Delete Menu Items: Supports the deletion of menu items based on specific criteria.
-Key Endpoints
-GET /menu/list: Retrieves a list of all menu items.
-GET /menu: Retrieves dynamic menu items based on specific query parameters.
-POST /menu: Creates a new menu item based on the provided details.
-
-3.3.11 Menu Access Module Overview
-Overview
-The menu-access module is responsible for managing access control to menu items within the microservice. It includes functionalities for creating menu access permissions, ensuring that users have the appropriate access to various menu items.
-Key Responsibilities
-Create Menu Access Permissions: Provides functionality to create new menu access permissions.
-Key Endpoints
-POST /menu-access/create: Creates a new menu access permission based on the provided details.
-
 3.3.12 Outlet Module Overview
 Overview
 The outlet module is responsible for managing operations related to outlets within the microservice. It includes functionalities for getting outlets, retrieving outlet classifications, generating reports and outlet list.
@@ -701,9 +571,6 @@ POST /posm/stock-by-section: Adds POSM stock levels by section based on the prov
 GET /posm/stock-by-section: Retrieves POSM stock levels by section based on the provided query parameters.
 GET /posm/posm-status: Retrieves the status of POSM items based on the provided query parameters.
 GET /posm/posm-report: Generates a report for POSM stock levels and statuses based on the provided query parameters.
-POST /posm/nill-stock-by-section: Marks POSM stock as nil by section based on the provided details.
-POST /posm/stock-by-region: Adds POSM stock levels by region based on the provided details.
-
 3.3.14 Product Tree Module Overview
 Overview
 The product-tree module is responsible for managing operations related to the product hierarchy within the microservice. It includes functionalities for creating, updating, and removing products, as well as retrieving product lists with prices and updating product prices.
@@ -766,16 +633,9 @@ The user-pjp module is responsible for managing Planned Journey Plans (PJP) for 
 Key Responsibilities
 Create PJP Plans: Provides functionality to create new PJP plans for users.
 Retrieve PJP Categories: Allows retrieval of PJP categories.
-Retrieve PJP Lists: Supports fetching lists of PJP plans based on specific query parameters.
-Approve or Reject PJP Requests: Provides functionality to approve or reject PJP requests.
-Export PJP Data: Supports exporting PJP data based on specific criteria.
 Key Endpoints
 POST /pjp_plan/save_plan_data: Creates a new PJP plan based on the provided details.
 GET /pjp_plan/category: Retrieves PJP categories.
-GET /pjp_plan/pjp-list: Retrieves a list of PJP plans based on specific query parameters.
-PATCH /pjp_plan/approve-reject-pjp: Approves or rejects a PJP request based on the provided details.
-GET /pjp_plan/export-pjp-data: Exports PJP data based on specific query parameters.
-
 3.3.19 User Module Overview
 Overview
 The user module is responsible for managing user-related operations within the microservice. It includes functionalities for creating, updating, retrieving, and deleting user information, as well as managing field force personnel and retrieving various user lists.
@@ -809,8 +669,6 @@ POST /vehicle-load/load-summary: Creates a new vehicle load summary record based
 GET /vehicle-load/load-summary: Retrieves vehicle load summaries based on specific query parameters.
 GET /vehicle-load/route-wise-preorder: Retrieves route-wise pre-order lists based on specific query parameters.
 GET /vehicle-load/load-summary-details: Retrieves detailed information about vehicle load summaries based on specific query parameters.
-
-
 3.4 Service 4: Trade Marketing Service
 3.4.1 Promotion Module Overview
 
@@ -834,7 +692,6 @@ GET /promotions/all: Retrieves a list of all promotions based on specific query 
 GET /promotions/by-points: Retrieves promotions based on points.
 
 3.5 Service 5: Stock management Service
-
 3.5.1 QC Management Module Overview
 
 Overview
@@ -850,7 +707,6 @@ POST /qc-management/qc-insert: Inserts new QC records based on the provided deta
 GET /qc-management/get-qc-faults: Retrieves a list of QC faults based on specific query parameters.
 GET /qc-management/get-qc-summary: Retrieves QC summaries based on specific query parameters.
 GET /qc-management/delete-qc: Deletes QC records based on specific query parameters.
-
 3.5.2 Shipment API Module Overview
 
 Overview
@@ -875,19 +731,12 @@ Key Responsibilities
 Retrieve Department On-Hand Stock: Provides functionality to retrieve on-hand stock for a specific department.
 Retrieve Distributor On-Hand Stock: Supports fetching on-hand stock for distributors.
 Retrieve Department Stock by Department and SKU: Allows retrieving stock information for a specific department and SKU.
-Retrieve Distributor Transferable Stock: Supports fetching transferable stock for distributors.
-Retrieve Pending IGT List: Provides functionality to retrieve a list of pending inter-gate transfers.
-Retrieve Pending IGT Details: Supports fetching detailed information about pending inter-gate transfers.
 Key Endpoints
 GET /stock-api/get-dep-onhand-stock: Retrieves on-hand stock for a specific department based on query parameters.
 GET /stock-api/get-distributor-onhand-stock: Retrieves on-hand stock for distributors based on query parameters.
 GET /stock-api/get-dep-onHandStock-byDep-bySku: Retrieves stock information for a specific department and SKU based on query parameters.
-GET /stock-api/get-distributor-transferable-stock: Retrieves transferable stock for distributors based on query parameters.
-GET /stock-api/get-pending-igt-list: Retrieves a list of pending inter-gate transfers based on query parameters.
-GET /stock-api/get-pending-igt-details: Retrieves detailed information about pending inter-gate transfers based on query parameters.
 
 3.6 Service 6: Sales Management Service
-
 3.6.1 Web Entry Module Overview
 Overview
 The web-entry module is responsible for managing operations related to web entries within the microservice. It includes functionalities related to submitting house sell.
@@ -898,37 +747,19 @@ Key Endpoints
 POST /web-entry/add-sales: Adds sales data to the web entry module based on the provided details.
 
 3.7 Service 7: Dashboard Service
-
-
 3.7.1 Dashboard Module Overview
 Overview
 The dashboard module is responsible for managing operations related to the AFBL dashboard within the microservice. It includes functionalities for retrieving volume data, outlet information, preorder delivery information, and monthly target achievements.
+
 
 Key Responsibilities
 Retrieve Volume Data: Provides functionality to retrieve volume data based on specific query parameters.
 Retrieve Outlet Information: Allows fetching detailed information about outlets.
 Retrieve Preorder Delivery Information: Supports fetching preorder delivery information.
-Retrieve Preorder Delivery Information by Section: Provides functionality to retrieve preorder delivery information based on sections.
-Retrieve Monthly Target Achievement: Supports fetching monthly target achievement data.
-Retrieve Date-wise Monthly Target Achievement: Provides functionality to retrieve monthly target achievement data based on specific dates.
 Key Endpoints
 POST /dashboard/get-volume: Retrieves volume data based on the provided details.
 POST /dashboard/get-outlet-info: Retrieves detailed information about outlets based on the provided details.
 POST /dashboard/get-preorder-delivery-info: Retrieves preorder delivery information based on the provided details.
-POST /dashboard/get-preorder-delivery-info-by-section: Retrieves preorder delivery information by section based on the provided details.
-GET /dashboard/monthly-target-archievement: Retrieves monthly target achievement data based on specific query parameters.
-GET /dashboard/by-date-monthly-target-archievement: Retrieves monthly target achievement data based on specific dates.
-
-3.7.2 Cron Job Module Overview
-Overview
-The cron job module is responsible for managing scheduled tasks related to the AFBL dashboard within the microservice. It includes functionalities for preparing sales summary data and preparing target visited data.
-
-Key Responsibilities
-Prepare Sales Summary Data: Provides functionality to prepare and update sales summary data.
-Prepare Target Visited Data: Allows preparing and updating target visited data.
-Key Endpoints
-GET /afbl-dashboard-cron-job/prepare-summary-data: Prepares and updates sales summary data.
-GET /afbl-dashboard-cron-job/target-visited: Prepares and updates target visited data.
 
 3.8 Service 8: Survey Service
 
@@ -954,12 +785,10 @@ The survey-configuration module is responsible for managing operations related t
 Key Responsibilities
 Retrieve Question Configurations: Provides functionality to retrieve a list of question configurations based on specific query parameters.
 Insert Survey Configurations: Allows inserting new survey configuration records.
-Send Mid-Day Updates: Supports sending mid-day updates for surveys.
 Store Survey Configurations: Handles storing survey configurations based on provided details.
 Key Endpoints
+Key Endpoints
 GET /survey-configuration/get-question-configuration: Retrieves a list of question configurations based on specific query parameters.
-GET /survey-configuration/send_mid_day_update: Sends mid-day updates for surveys based on provided headers.
-POST /survey-configuration/survey-config-insert: Inserts new survey configuration records based on the provided details.
 POST /survey-configuration: Stores survey configurations based on the provided details.
 
 3.9 Service 9: Report Service
@@ -973,14 +802,6 @@ Key Responsibilities
 Key Endpoint
 GET /get-attendance-format
 Retrieves attendance records in bulk for specific business units and departments, filtered by date range and optional role parameters.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which attendance is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the attendance records.
-o	start_date (date): The start date for the attendance report.
-o	end_date (date): The end date for the attendance report.
-o	data_for (string): The purpose for which the attendance data is being retrieved (e.g., "Excel", "Table View").
-o	role (string, optional): An optional filter to retrieve attendance based on specific employee roles within the selected departments.
-
 3.9.2 Sales Master Data Report Module Overview
 Overview
 The Sales Master Data Report Module is designed to generate detailed sales reports based on routes, including both house sales and other sales types and promotion data. This module is crucial for understanding sales performance across different routes, departments, and product types, providing a comprehensive view of sales data within a selected date range.
@@ -991,16 +812,6 @@ Key Responsibilities
 Key Endpoint
 GET /route-wise-actual-sales
 Retrieves actual sales data by delivery route, filtered by departments, product types, locations, and date range.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which sales data is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the sales data.
-o	start_date (date): The start date for the sales report.
-o	end_date (date): The end date for the sales report.
-o	product_type (string): The type of product for which the sales report is generated (e.g., "10 for SKU").
-o	location_type (string): The type of location where the sales occurred (e.g., "section", "route").
-o	product_ids (string): A comma-separated list of specific product IDs to filter the sales data.
-o	data_for (string, optional): Specifies the purpose of the data retrieval (e.g., "Excel", "View").
-
 3.9.3 Non-Order Outlet Report Module Overview
 
 Overview
@@ -1013,15 +824,6 @@ Key Responsibilities
 Key Endpoint
 GET /non-pre-order-outlet-report
 Retrieves sales data for non-pre-order outlets, filtered by departments, product types, locations, and date range.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which sales data is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the sales data.
-o	start_date (date): The start date for the sales report.
-o	end_date (date): The end date for the sales report.
-o	product_type (string): The type of product for which the sales report is generated (e.g., "10 for SKU").
-o	location_type (string): The type of location where the sales occurred (e.g., "outlet").
-o	product_ids (string): A comma-separated list of specific product IDs to filter the sales data.
-o	data_for (string, optional): Specifies the purpose of the data retrieval (e.g., "Excel", "View").
 
 3.9.4 Sales By Geo Level Report Module Overview
 Overview
@@ -1035,15 +837,6 @@ GET /get-sales-view – Table View of Data
 GET / get-sales-report – Excel Download 
 
 Retrieves sales data across various locations (region, area, territory, point), filtered by departments, product types, locations, and report type (volume, value).
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which sales data is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the sales data.
-o	start_date (date): The start date for the sales report.
-o	end_date (date): The end date for the sales report.
-o	product_type (string): The type of product for which the sales report is generated (e.g., "10 for SKU").
-o	location_type (string): The type of location where the sales occurred (e.g., "region", "area", "territory", "point").
-o	type (string, optional): Specifies the report type, either sales volume or sales value.
-
 
 3.9.5 Field Force Sales Performance Report Module Overview
 
@@ -1057,14 +850,6 @@ Key Endpoint
 GET /field-force-sales-view – Table View
 GET / field-force-sales-excel – Excel Download
 Retrieves sales performance data for field forces, filtered by departments, product types, locations, and field force IDs.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which sales data is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the sales data.
-o	start_date (date): The start date for the sales performance report.
-o	end_date (date): The end date for the sales performance report.
-o	ff_ids (string): A comma-separated list of field force IDs to filter the sales performance data.
-o	product_type (string): The type of product for which the sales report is generated (e.g., "10 for SKU").
-o	location_type (string): The type of location where the sales occurred (e.g., "route").
 
 3.9.6 Route-Wise Delivery Report Module Overview
 
@@ -1077,16 +862,7 @@ Key Responsibilities
 Key Endpoint
 GET /route-wise-delivery-view
 Retrieves delivery data for specific routes, filtered by departments, product types, locations, and date range.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which delivery data is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the delivery data.
-o	start_date (date): The start date for the delivery report.
-o	end_date (date): The end date for the delivery report.
-o	product_type (string): The type of product for which the delivery report is generated (e.g., "10 for SKU, 9 for Brnad").
-o	location_type (string): The type of location associated with the deliveries (e.g., "section", "route").
-o	product_ids (string): A comma-separated list of specific product IDs to filter the delivery data.
 3.9.7 Inventory Management Report Module Overview
-
 Overview
 The Stock Management Report Module is essential for overseeing and analyzing stock levels within an organization. This module provides a comprehensive report on stock management, allowing businesses to track their inventory, intransit, shipments, sales, opening, closing, promotion and other critical metrics over a specified period. It aids in optimizing stock levels and improving supply chain efficiency.
 Key Responsibilities
@@ -1097,13 +873,6 @@ Key Endpoint
 GET /stock-management-report- Table View
 GET /stock-management-report-excel – Excel Download
 Generates a detailed report on stock management for specified business units and departments, filtered by date range and product specifications.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which the stock management report is generated.
-o	dep_ids (string): A comma-separated list of department IDs to filter the stock data.
-o	start_date (date): The start date for the stock management report.
-o	end_date (date): The end date for the stock management report.
-o	pack_type (string, optional): The type of packaging for stock items (default is 'piece').
-o	type (string, optional): The type of report to generate, either 'volume' or 'value' (default is 'volume').
 3.9.8 Current Stock Report Module Overview
 
 Overview
@@ -1117,12 +886,7 @@ Key Endpoint
 GET /stock-closing-report – Table View
 GET /stock-closing-report-excel – Excel Download
 Generates a report detailing the current stock levels for specified strategic business units (SBUs) and departments.
-•	Parameters:
-o	sbu_id (string): The identifier for the strategic business unit for which the current stock report is generated.
-o	dep_ids (string): A comma-separated list of department IDs to filter the stock data.
-o	start_date (date): The start date for the stock management report.
-o	end_date (date): The end date for the stock management report.
-o	pack_type (string, optional): The type of packaging for stock items (default is 'piece').
+
 3.9.9 Stock Management Report Module Overview
 
 Overview
@@ -1135,13 +899,6 @@ Key Endpoint
 GET /stock-management-report- Table View
 GET /stock-management-report-excel – Excel Download
 Generates a detailed report on stock management for specified business units and departments, filtered by date range and product specifications.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which the stock management report is generated.
-o	dep_ids (string): A comma-separated list of department IDs to filter the stock data.
-o	start_date (date): The start date for the stock management report.
-o	end_date (date): The end date for the stock management report.
-o	pack_type (string, optional): The type of packaging for stock items (default is 'piece').
-o	type (string, optional): The type of report to generate, either 'volume' or 'value' (default is 'volume').
 3.9.10 Order Performance Report Module Overview
 
 Overview
@@ -1153,14 +910,6 @@ Key Responsibilities
 Key Endpoint
 GET / get-pjp-compliance-report
 Retrieves an order performance report for specified SBUs and departments within a given date range.
-Parameters:
-•	sbu_id (string): The identifier for the strategic business unit for which the report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the report data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	ff_id (string, optional): The field force ID to filter the report; if not provided, all field forces for the specified SBU and departments will be considered.
-•	data_for (string, optional): Specifies the context or audience for the report, defaulting to None.
-
 
 3.9.11 SO Attendance Report Module Overview
 Overview
@@ -1172,12 +921,6 @@ Key Responsibilities
 Key Endpoint
 GET /get-attendance-format
 Retrieves attendance records in bulk for specific business units and departments, filtered by date range and optional role parameters.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which attendance is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the attendance records.
-o	start_date (date): The start date for the attendance report.
-o	end_date (date): The end date for the attendance report.
-o	ff_id(string): field force id
 3.9.12 TSM Attendance Report Module Overview
 Overview
 The TSM Attendance Report Module provides an endpoint designed to fetch attendance data for employees within specific departments and business units over a selected date range and field force. This module is essential for generating comprehensive attendance reports based on various filters such as department, role, and timeframe, making it easier for administrators to track and manage attendance records.
@@ -1188,12 +931,6 @@ Key Responsibilities
 Key Endpoint
 GET /get-attendance-format
 Retrieves attendance records in bulk for specific business units and departments, filtered by date range and optional role parameters.
-•	Parameters:
-o	sbu_id (string): The strategic business unit identifier for which attendance is being fetched.
-o	dep_ids (string): A comma-separated list of department IDs to filter the attendance records.
-o	start_date (date): The start date for the attendance report.
-o	end_date (date): The end date for the attendance report.
-o	ff_id(string): field force id
 
 3.9.13 PJP Compliance Report Module Overview
 
@@ -1207,13 +944,6 @@ Key Responsibilities
 Key Endpoint
 GET /get-main-pjp-compliance-report
 Retrieves the PJP compliance report for specified SBUs and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the report data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	ff_id (string, optional): The field force ID to filter the report; if not provided, all field forces for the specified SBU and departments will be considered.
-•	data_for (string, optional): Specifies the context or audience for the report, defaulting to None (can be set to 'view' for JSON response or omitted for Excel download).
 3.9.14 SO Login Log Report Module Overview
 
 Overview
@@ -1226,12 +956,6 @@ Key Responsibilities
 Key Endpoint
 GET /get-so-login-log
 Retrieves the SO login log for specified SBUs and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the report data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	data_for (string, optional): Specifies the context or audience for the report, defaulting to None (can be set to 'view' for JSON response or omitted for Excel download).
 
 3.9.15 Registered Outlet Report Module Overview
 
@@ -1245,11 +969,6 @@ Key Responsibilities
 Key Endpoint
 GET /registered-outlet
 Retrieves the number of outlets registered by each sales officer for specified strategic business units (SBUs) and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the report data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
 3.9.16 Outlet Wise Damage Report Module Overview
 
 Overview
@@ -1264,15 +983,6 @@ GET /qc-report-by-outlet-view – Table View
 GET /qc-report-by-outlet – Excel Download
 
 Retrieves a quality control report for specified outlets, products, and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the report data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	product_type (string): The type of product to filter the report data.
-•	product_ids (string): A comma-separated list of product IDs to filter the report data.
-•	qc_type (int, optional): The type of quality control; defaults to 1 if not specified.
-•	type (string, optional): Specifies whether to report by volume or value; defaults to 'volume' if not provided.
 3.9.17 Route Wise Damage Report Module Overview
 
 Overview
@@ -1286,15 +996,6 @@ Key Endpoint
 GET /qc-report-by-section-view – Table View
 GET / qc-report-by-section – Excel Download
 Retrieves a quality control report for specified outlets, products, and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the report data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	product_type (string): The type of product to filter the report data.
-•	product_ids (string): A comma-separated list of product IDs to filter the report data.
-•	qc_type (int, optional): The type of quality control; defaults to 1 if not specified.
-•	type (string, optional): Specifies whether to report by volume or value; defaults to 'volume' if not provided.
 
 3.9.18 Outlet Wise Preorder Live Report Module Overview
 
@@ -1309,15 +1010,6 @@ Key Endpoint
 GET /outlet-wise-preorder-live-view – Table View
 GET / outlet-wise-preorder-live-excel – Excel Download
 Retrieves live preorder data for specified outlets, products, and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the preorder data is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the preorder data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	product_type (string): The type of product to filter the preorder data.
-•	location_type (string): The type of location to filter the preorder data.
-•	product_ids (string): A comma-separated list of product IDs to filter the preorder data.
-•	type (string, optional): Specifies whether to report by volume or value; defaults to 'volume' if not provided.
 
 3.9.19 Route Wise Preorder Live Report Module Overview
 
@@ -1332,15 +1024,6 @@ Key Endpoint
 GET /route-wise-pre-order-live-view– Table View
 GET / route-wise-pre-order-live-excel – Excel Download
 Retrieves live preorder data for specified outlets, products, and departments within a given date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the preorder data is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the preorder data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	product_type (string): The type of product to filter the preorder data.
-•	location_type (string): The type of location to filter the preorder data.
-•	product_ids (string): A comma-separated list of product IDs to filter the preorder data.
-•	type (string, optional): Specifies whether to report by volume or value; defaults to 'volume' if not provided.
 
 3.9.20 Outlet Wise Sales Report Module Overview
 
@@ -1354,16 +1037,6 @@ Key Responsibilities
 Key Endpoint
 GET /outlet-wise-delivery-report
 Retrieves delivery data for specified outlets, products, and departments within a given date range, with the option to generate a view or an Excel report.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the delivery report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the delivery data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	product_type (string): The type of product to filter the delivery data.
-•	location_type (string): The type of location to filter the delivery data.
-•	product_ids (string): A comma-separated list of product IDs to filter the delivery data.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
-•	type (string, optional): Specifies whether to report by volume or value; defaults to 'volume' if not provided.
 3.9.21 Pre Order vs Delivery Report Module Overview
 Overview
 The Pre Order vs Delivery Report Module generates comprehensive reports detailing pre-order quantities and delivery performance across various outlets. This module allows businesses to assess the effectiveness of their pre-order strategies, monitor product availability, and evaluate sales performance within specific timeframes, enhancing inventory management and decision-making processes.
@@ -1375,11 +1048,6 @@ Key Responsibilities
 Key Endpoint
 GET /get-report-view
 Retrieves pre-order and delivery data for specified SBUs, departments, and products within a defined date range, with the option to generate a comprehensive view.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the pre-order report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the pre-order and delivery data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
 
 3.9.22 Memo Report Module Overview
 Overview
@@ -1391,15 +1059,6 @@ Key Responsibilities
 Key Endpoint
 GET /memo-report
 Retrieves memo data for specified SBUs, products, and departments within a defined date range, providing options for on-screen display or Excel report generation.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the memo report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the memo data.
-•	product_type (string): The type of product to filter the memo data.
-•	product_ids (string): A comma-separated list of product IDs to filter the memo data.
-•	location_type (string): The type of location to filter the memo data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
 
 3.9.23 Trade Offer Report Module Overview
 
@@ -1412,13 +1071,6 @@ Key Responsibilities
 Key Endpoint
 GET /trade-adjustement-report
 Retrieves trade adjustment data for specified SBUs and departments within a defined date range, providing options for on-screen display or Excel report generation.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the trade adjustment report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the trade adjustment data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	report_type (string, optional): The type of report to generate, allowing customization based on business needs(Summery, Trade Offer, Special Offer).
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
 3.9.24 Secondary Trade Adjustment Report Module Overview
 
 Overview
@@ -1430,13 +1082,6 @@ Key Responsibilities
 Key Endpoint
 GET /trade-adjustment-summary
  Retrieves trade adjustment data for specified SBUs and departments within a defined date range, providing options for on-screen display or Excel report generation.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the trade adjustment report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the trade adjustment data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	report_type (string, optional): The type of report to generate, allowing customization based on business needs.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
 3.9.25 By Point Pending Report Module Overview
 Overview
 The By Point Pending Report Module enables the retrieval of pending sales data by points across various locations. This module allows businesses to track pending volumes for specific departments and SBUs, providing valuable insights for monitoring sales performance and pending deliveries within a specified date range.
@@ -1448,13 +1093,8 @@ Key Responsibilities
 Key Endpoint
 GET /by-point-pending-report
 Retrieves pending sales data by points for specified SBUs, departments, and products within a defined date range, with options for on-screen display or Excel report generation.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the pending report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the pending sales data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
 3.9.26 Secondary Sales Report Module Overview
+
 Overview
 Secondary Sales Report retrieves date-wise secondary sales data for specific products over a given date range and performs various calculations such as cumulative sales, daily averages, targets, achievements, and growth comparisons with the previous year.
 
@@ -1469,17 +1109,9 @@ Calculates the achievement percentage based on the sales vs. targets and also ca
 Compares the current year sales with the same period in the previous year to calculate growth percentages.
 5.	Special Handling for Sales Days:
 Handles specific conditions such as counting the number of working days (excluding Fridays).
-________________________________________
+
 Key Endpoints and Parameters:
 •	GET /date-wise-secondary-sales
-o	Parameters:
-	sbu_id (str): Strategic Business Unit ID to filter sales data.
-	dep_ids (str): Department IDs to filter sales data.
-	start_date (date): Start date for the sales data query.
-	end_date (date): End date for the sales data query.
-	type (str, optional): Specifies the type of data ('volume' by default).
-	data_for (str, optional): Specifies if the data is for 'view'.
-
 3.9.27 PSR Sales Report Module Overview
 Overview
 The PSR Sales Report Module provides detailed insights into sales performance across various sections or routes. It enables businesses to analyze sales data for different products and locations within a specific date range, offering both volume and value-based reporting. This module supports strategic planning and inventory optimization by delivering customizable reports.
@@ -1490,17 +1122,6 @@ Key Responsibilities
 Key Endpoint
 GET /psr-sales-report
 Retrieves route-wise or location-wise sales data for specified SBUs, products, and departments within a defined date range, providing options for on-screen display or Excel report generation.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the PSR sales report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the sales data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	product_type (string): The type of product to filter the sales data.
-•	location_type (string): The type of location (e.g., route, section) for which the sales data is reported.
-•	product_ids (string): A comma-separated list of product IDs to filter the sales data.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
-•	type (string, optional): Specifies whether the report should be based on 'volume' or 'value'. Default is 'volume'.
-
 3.9.28 Achievement by Rank Report Module Overview
 Overview
 The Achievement by Rank Report Module provides a comprehensive analysis of sales achievements segmented by rank across various locations and departments against last year . This module allows businesses to evaluate their sales performance against set targets over a specific date range, facilitating strategic planning and performance management. The reports can be generated based on volume or value metrics and are available for on-screen display or downloadable Excel formats.
@@ -1512,14 +1133,6 @@ Key Responsibilities
 Key Endpoint
 GET /achievement-by-rank
 Retrieves sales achievement data by rank for specified SBUs and departments, offering insights into sales performance against targets over a defined date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the achievement report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the sales data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	location_type (string): The type of location (e.g., route, section) for which the sales data is reported.
-•	type (string, optional): Specifies whether the report should be based on 'volume' or 'value'. Default is 'volume'.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
 
 3.9.29 Point Pending Report Module Overview
 
@@ -1533,13 +1146,6 @@ Key Responsibilities
 Key Endpoint
 GET /point-pending-report
 Retrieves pending stock data by distributor for specified SBUs and departments, offering insights into stock availability against sales targets over a defined date range.
-Parameters
-•	sbu_id (string): The identifier for the strategic business unit for which the point pending report is generated.
-•	dep_ids (string): A comma-separated list of department IDs to filter the stock data.
-•	start_date (date): The start date for the reporting period.
-•	end_date (date): The end date for the reporting period.
-•	data_for (string, optional): Specifies the purpose of the data, such as 'view' for on-screen display.
-
 
 3.11 Web frontend service
 3.11.1 Login Overview
@@ -1549,20 +1155,15 @@ The Login component is a crucial part of the authentication system in a React ap
 Key Responsibilities
 1. User Authentication: Handle user login by collecting username and password.
 2. Form Management: Utilize Ant Design's Form component for input validation and submission.
-3. State Management: Use Redux for managing authentication state.
-4. Browser Information Collection: Gather and store browser details using Bowser library.
-5. IP Address Tracking: Collect and store user's IP address information.
-6. Error Handling: Display error notifications for failed login attempts.
+3. Browser Information Collection: Gather and store browser details using Bowser library.
+4. IP Address Tracking: Collect and store user's IP address information.
+5. Error Handling: Display error notifications for failed login attempts.
 
 Key Functions
 - handleLogin(values): Manages the login process, including:
   - Collecting browser information
   - Retrieving IP address data
-  - Dispatching login action
-  - Storing browser and IP information in localStorage
-- handleChange(name, event): Updates the local state with form input changes.
-- onFinishFailed(errorInfo): Logs form submission failures to the console.
-
+  - Dispatching login action 
 
 3.11.2 AccessGuard Overview
 Overview
@@ -1574,11 +1175,7 @@ Key Responsibilities
 3. Error Handling: Display an error page when access is denied.
 
 Key Functions
-- isMenuRouteExist(): Checks if the current path exists in the user's menu permissions stored in local storage. It iterates through the menu data, comparing the current path against menu URLs based on the specified pathCheckingType.
-
 This AccessGuard component enhances application security by ensuring that users can only access routes they have permission for, based on their menu data stored in local storage.
-
-
 
 3.11.3 Dashboard Overview
 Overview
@@ -1599,15 +1196,6 @@ Key Features
 4. Location Tracking: Integrate Google Maps to display real-time location data of field forces.
 5. Strike Rate Analysis: Present strike rate and related metrics in card format.
 6. Responsive Design: Ensure the dashboard is responsive across different device sizes.
-
-Key Components
-1. TopDropdown: Manages filters for date ranges and hierarchical data selection.
-2. FirstSection: Displays sales performance charts and metrics.
-3. SecondSection: Shows outlet visit statistics and summary data.
-4. ThirdSection: Presents numeric distribution data with bar charts.
-5. ForthSection: Combines strike rate information and location tracking map.
-6. LocationMap: Integrates Google Maps for visualizing location data.
-7. MapComponent: Handles the rendering of Google Maps with custom markers and info windows.
 
 This Dashboard component provides a comprehensive overview of business operations, combining sales data, outlet information, and location tracking in a single, interactive interface. It enhances decision-making by presenting complex data in an easily digestible format through various charts, maps, and summary cards.
 
@@ -1631,14 +1219,6 @@ Key Features
 4. Excel Export: Enable users to download the filtered data in Excel format.
 5. Loading States: Display loading indicators during data fetching and export operations.
 6. Responsive Design: Ensure the component is usable across various device sizes.
-
-Key Functions
-1. getGeneratedOutletList(): Fetch outlet data based on selected department IDs.
-2. getExcelData(): Handle the export of data to Excel format.
-3. handleSearch(): Manage the search functionality for individual columns.
-4. getColumnSearchProps(): Configure search properties for table columns.
-5. getDepId(): Process department selection data from the filter dropdown.
-
 
 3.11.5 Field Force Management Overview
 Overview
@@ -1680,14 +1260,6 @@ Key Responsibilities:
 5. Calculate and display income, expense, and profit/loss information
 6. Integrate with backend services for data operations
 
-Key Functions:
-- getData() (both files): Fetches ROI data from an API
-- handleAmountChange() (Create.js): Updates income or expense amounts
-- handleSaveClick() (Create.js): Saves or updates ROI data
-- getByPointSalesCommission() (Create.js): Retrieves commission data
-- expenseTypeDataColumns() and incomeTypeDataColumn() (both files): Define table structures for displaying data
-
-
 3.11.7 Section Overview
 Overview:
 The Sections and Create components are part of a larger React application, likely used for managing organizational structures, sections, or territories. The Sections component displays a list of sections in a table, allowing users to view and edit them. The Create component is a form interface for creating or editing sections, including configuring routes and schedules.
@@ -1703,18 +1275,6 @@ Key Responsibilities:
    - Manage form state and submission.
    - Configure routes and schedules for sections.
 
-Key Functions:
-1. Sections Component:
-   - `getData()`: Fetches section data from an API.
-   - `handleOnEditBtnClick()`: Handles the edit button click for a section.
-   - `getColumns()`: Defines the structure of the table columns.
-
-2. Create Component:
-   - onFinish(): Handles form submission for creating or updating a section.
-   - handleAddRoute(): Adds a new route to the section.
-   - fetchEditData(): Retrieves existing section data for editing.
-   - handleEnableDisable(): Toggles the status (enabled/disabled) of a route.
-
 3.11.8 Vehicle Overview
 Overview:
 These components are part of a vehicle management system in a React application. VehicleDetails.js displays detailed information about a specific vehicle in a modal, while Create.js handles the creation and editing of vehicle records.
@@ -1726,15 +1286,6 @@ Key Responsibilities:
 4. Handle user interactions with vehicle data
 5. Integrate with backend services for data operations
 
-Key Functions:
-- getData() (VehicleDetails.js): Fetches vehicle details from an API
-- onFinish() (Create.js): Handles form submission for creating or updating a vehicle
-- fetchFFList() (Create.js): Retrieves vehicle type options
-- fetchLineList() (Create.js): Fetches line (SBU) data
-- fetchPointList() (Create.js): Retrieves distribution point options based on the selected line
-
-
-
 3.11.9 Stock Management New Shipment Overview
 Overview:
 The NewShipment component is a complex React component used to manage stock shipments or open stock entries in an inventory management system. It provides a user interface for viewing and updating stock quantities for various SKUs (Stock Keeping Units).
@@ -1745,13 +1296,6 @@ Key Responsibilities:
 3. Sync data with external systems (via API calls)
 4. Validate and submit shipment or opening stock data
 5. Manage UI states (loading, errors, modals)
-
-Key Functions:
-- updateList(): Updates the SKU list with stock-in-hand data
-- handleInputChange(): Manages changes in shipment quantity inputs
-- handleFilter(): Fetches and processes on-hand stock data
-- handleSyncDataClick(): Syncs data with external systems
-- handleSubmit(): Submits the shipment or opening stock data
 
 Notable Features:
 - Uses a modal for confirming shipment or stock entry submission
@@ -1774,12 +1318,6 @@ Key Responsibilities:
 4. Handle date range selections
 5. Manage loading states and error handling
 
-Key Functions:
-- getFilterData(): Fetches report data based on selected filters (all components)
-- handleExportBtn() / getExcelData(): Handles exporting data to Excel (ShipmentReport and StockManagementReportComponent)
-- generateTable(): Generates table data for Stock Management Report
-- onDateChange() / onDateRangeChange(): Handles date range selection
-
 Common Features:
 - Use of Ant Design components (Table, DatePicker, Spin, etc.)
 - Integration with backend services for data fetching
@@ -1800,13 +1338,6 @@ Key Responsibilities:
 4. Validate and submit QC entry data
 5. Manage UI states (loading, errors, date ranges)
 
-Key Functions:
-- handleSubmit(): Processes and submits the QC entry data
-- updateTableBasedOnRouteAndPoint(): Fetches and processes SKU and QC data to populate the table
-- handleInput(): Manages changes in QC quantity inputs
-- handleFilter(): Triggers data fetch based on selected filters
-- getRoutes(): Fetches available routes for the selected distribution point
-
 Notable Features:
 - Uses a dynamic table structure that adapts to different fault categories
 - Implements date range selection for QC entries
@@ -1826,14 +1357,6 @@ Key Responsibilities:
 4. Validate and submit verified damage data
 5. Manage UI states (loading, errors, date selection)
 
-Key Functions:
-- getColumns(): A memoized function that generates dynamic table columns based on fault categories
-- handleInput(): Manages changes in verified damage quantities and remarks inputs
-- handleSubmit(): Processes and submits the verified damage data
-- getData(): Fetches and processes SKU and damage data to populate the table
-
-
-
 3. Browse Verified Damage component
 Overview:
 The BrowseVerifiedDamage component is a React component designed to display and manage verified damage reports in an inventory management system. It provides a user interface for viewing and exporting damage data for various SKUs (Stock Keeping Units) across different fault categories.
@@ -1844,16 +1367,6 @@ Key Responsibilities:
 3. Provide date-based filtering of damage reports
 4. Enable exporting of damage data to Excel format
 5. Calculate and display totals for each fault category
-
-Key Functions:
-- getColumns(): Generates dynamic table columns based on fault categories and damage data
-- getData(): Fetches and processes verified damage data to populate the table
-- getExcelData(): Prepares and exports damage data to Excel format
-- handleClick(): Triggers the Excel export functionality
-- onDateChange(): Handles date selection for filtering damage reports
-
-
-
 
 4. Damage Report Damage component
 Overview:
@@ -1866,14 +1379,6 @@ Key Responsibilities:
 4. Enable exporting of damage report data to Excel format
 5. Manage loading states and error handling
 
-Key Functions:
-- getFilterData(): Fetches damage report data based on selected filters and processes it for display
-- getExcelData(): Prepares and exports damage report data to Excel format
-- handleColumnGeneration(): Generates dynamic table columns based on the report data structure
-- processDataForDisplay(): Transforms the API response data into a format suitable for the table
-
-
-
 3.11.12 Product Management Overview
 Overview:
 These components are part of a product management system in a React application. They provide different views for browsing and visualizing product-related data, including brands, SKUs, and a hierarchical product tree.
@@ -1883,12 +1388,6 @@ Key Responsibilities:
 2. Render data in various formats (tables, tree structure)
 3. Handle loading states and error scenarios
 4. Provide interactive elements for data exploration
-
-Key Functions:
-- getBrands() / getSKUs() / getAllProductTree(): Fetch respective product data from backend services
-- returnBadge() (BrowseProducts): Generates status badges for brands
-- updateData() (BrowseSkus): Processes SKU data for display
-- renderForeignObjectNode() (BrowseProductsTree): Renders custom nodes for the product tree
 
 Common Features:
 - Use of Ant Design components (Table, Card, Spin)
@@ -1918,12 +1417,6 @@ Key Responsibilities:
    - Generate dynamic table columns based on report structure
    - Enable exporting of report data to Excel format
 
-Key Functions:
-- handleSingleTableSaleInput() (WebEntry): Processes sales input and calculates promotions
-- updateList() and getCurrentStockData() (WebEntry): Fetch and update current stock data
-- getFilterData() (HouseSalesReport): Fetches and processes house sales report data
-- getExcelData() (HouseSalesReport): Prepares and exports report data to Excel
-
 Common Features:
 - Use of Ant Design components (Table, Spin)
 - Integration with backend services for data retrieval and submission
@@ -1933,8 +1426,6 @@ Common Features:
 Unique Aspects:
 - WebEntry: Complex promotion calculation logic, stock management
 - HouseSalesReport: Dynamic column generation, Excel export functionality
-
-
 
 3.11.14 Survey Overview
 Overview:
@@ -1989,16 +1480,6 @@ Key Features:
 - Date-based and location-based filtering of data
 - Confirmation dialogs for important actions (e.g., saving data)
 
-
-Key Functions:
-- handleAmountChange(): Manages changes in TA/DA amounts
-- handleEdit(), handleSave(), handleCancel(): Control the editing flow for TA/DA entries
-- getData(): Fetches TA/DA data from the backend
-- tableColumnData(): Generates dynamic table columns
-
-
-
-
 3.11.16 Vehicle Load Overview
 Overview:
 These components form a Vehicle Load Summary system within a React application. They handle browsing existing load summaries and creating new ones for vehicle deliveries.
@@ -2026,15 +1507,6 @@ Key Features:
 - PDF generation for delivery chalans and memos
 - CSV export of load summary data
 
-Key Functions:
-- getColumnSearchProps(): Implements column-level search functionality
-- handleInput(): Manages changes in SKU quantities and calculates remaining stock
-- fetchVehicleInfo(): Retrieves vehicle and route information
-- getPreOrderDetails(): Fetches and processes pre-order data
-- submitLoadSummary(): Handles the submission of load summaries with stock checks
-
-
-
 3.11.17 Target Overview
 Overview:
 These components form a comprehensive target management system within a React application. They handle target creation, reporting, and editing functionalities.
@@ -2061,14 +1533,6 @@ Key Features:
 - Excel export capabilities for reports and target data
 - Deletion of target configurations with confirmation dialogs
 
-Key Functions:
-- getData() (TargetReport): Fetches and processes target report data
-- getExcelData() (TargetReport & EditTargetList): Prepares and exports data to Excel format
-- handleDelete() (EditTargetList): Manages the deletion of target configurations
-- generateTable() (EditTargetList): Fetches and processes target list data
-- getColumnSearchProps() (EditTargetList): Implements column-level search functionality
-
-
 3.11.18 Trade Promotion Overview
 Overview:
 These components form a comprehensive Trade Promotion Management system within a React application. They handle different types of promotions including gift promotions, regular promotions (with bulk upload capability), and try-before-you-buy promotions.
@@ -2093,18 +1557,6 @@ Key Components:
    - Handles saving of promotion data with specific default values
    - Manages scope setup for the promotion
 
-
-Key Functions:
-- handleSave(): Manages the saving process for promotions
-- handleExcelUpload(): Handles the upload and processing of Excel files for bulk promotions
-- handleFinalDataChange(): Updates the final data state with new values
-
-Unique Aspects:
-- GiftPromotionConfiguration: Allows for multiple promotion configurations
-- RegularPromotionBulkUpload: Includes file upload and preview functionality
-- TryBeforeBuy: Has predefined default data for try-before-you-buy promotions
-
-
 3.11.19 Journey Plan Overview
 Overview:
 This component displays a list of journey plans and provides functionality for viewing, filtering, and managing these plans.
@@ -2115,13 +1567,6 @@ Key Features:
 3. Table display of journey plans with detailed information
 4. Modal for viewing detailed information about a specific journey plan
 5. Integration with FilterDropDownMulti for additional filtering options
-
-Key Functions:
-1. getColumns(): Defines the structure of the table columns
-2. handleOnViewBtnClick(): Opens a modal with detailed information about a selected journey plan
-3. getData(): Fetches journey plan data from the server based on selected filters
-4. onDateChange(): Handles date selection for filtering
-
 
 3.11.20 Leave Management Overview
 Overview:
@@ -2153,23 +1598,6 @@ Key Features:
    - Dynamic form generation based on selected field force and date range
    - Validation and error handling for form submission
 
-Key Functions:
-1. LeaveManagement:
-   - getData(): Fetches leave management data based on selected filters
-   - getExcelData(): Prepares and exports data to Excel format
-   - handleOnViewBtnClick(): Opens a modal with detailed leave information
-   - getColumns(): Defines the structure of the table columns
-
-2. CreateRecord:
-   - handleExcelUpload(): Processes and submits bulk upload data
-   - fetchCategoryList(): Retrieves leave types and existing leave balances
-   - handleInput(): Manages changes in leave balance inputs
-   - onFinish(): Handles form submission for individual leave balance entry
-   - sampleDownloadBtn(): Generates and downloads sample Excel file for bulk upload
-
-
-
-
 3.11.21 Asset Management Overview
 Overview:
 These components form part of a React application's Asset Management and Reporting system. They handle viewing asset details, generating reports for refurbished cooler services, and managing asset-related data.
@@ -2199,45 +1627,18 @@ Key Features:
 6. Loading state management with spinners
 7. Error handling and user feedback using SweetAlert2
 
-Key Functions:
-1. ViewAsset:
-   - tableColumnData(): Defines the structure of the asset table columns
-   - getData(): Fetches asset data based on selected filters
-   - handleOnViewBtnClick(): Opens a modal with detailed asset information
-
-2. RefurbishCoolerServiceReport:
-   - getFilterData(): Fetches report data based on selected filters
-   - getExcelData(): Prepares and exports data to Excel format
-
-3. AssetManagementReport:
-   - getFilterData(): Fetches report data based on selected filters
-   - getExcelData(): Prepares and exports data to Excel format
-
-
 3.11.22 User Journey Overview
 Overview:
 These components form part of a User Journey Plan and Reporting system within a React application. They handle configuring journey plans, listing existing plans, and generating punch history reports.
 
 1. UserJourneyPlanConfigure:
    Key Responsibility: Configuring and creating user journey plans.
-   Key Functions:
-   - handleSampleDownload(): Downloads a template for journey plan configuration.
-   - removeFile(): Removes an uploaded file.
 
 2. UserJourneyPlanList:
    Key Responsibility: Displaying and managing a list of user journey plans.
-   Key Functions:
-   - handlePjpDownload(): Downloads a specific user's journey plan as an Excel file.
-   - getColumns(): Defines the structure of the table columns for journey plans.
-   - fetchPjpList(): Retrieves the list of journey plans based on selected filters.
-   - onDateChange(): Handles date range selection for filtering.
-
+   
 3. PunchHistoryReport:
    Key Responsibility: Generating and displaying punch history reports.
-   Key Functions:
-   - getFilterData(): Fetches report data based on selected filters.
-   - getExcelData(): Prepares and exports data to Excel format.
-
 Common Features:
 - Use of Ant Design components for UI (Table, DatePicker, Spin, etc.)
 - Integration with backend services for data fetching and report generation
@@ -2261,25 +1662,10 @@ These components form part of a Product Entry and Price Management system within
 
 1. PointGeoLocation List:
    Key Responsibility: Displaying a list of point geo-locations.
-   Key Functions:
-   - getData(): Fetches geo-location data based on selected filters.
-   - getColumns(): Defines the structure of the table columns for geo-locations.
-
 2. MasterSku:
    Key Responsibility: Managing SKU entries for products.
-   Key Functions:
-   - getSkus(): Retrieves the list of SKUs.
-   - handleNewProduct(): Initiates the process of adding a new product.
-   - renderModal(): Renders the modal for adding or editing SKU details.
-
 3. PriceModule List:
    Key Responsibility: Displaying and managing product prices.
-   Key Functions:
-   - getData(): Fetches product price data based on selected filters.
-   - getColumns(): Defines the structure of the table columns for product prices.
-   - handleOnEditBtnClick(): Navigates to the edit page for a specific product price.
-   - fetchLineList(): Retrieves the list of lines (departments) for filtering.
-
 
 3.11.24 Digital Learning Overview
 Overview:
@@ -2288,17 +1674,9 @@ These components form a comprehensive Digital Learning management system within 
 Key Components:
 1. DigitalLearning (Main):
    Key Responsibility: Creating and editing digital learning content.
-   Key Functions:
-   - updateArrIdToString(): Converts array IDs to strings for consistent data handling.
-   - onCheckboxChange(): Handles changes in configuration checkboxes.
-   - submitScope(): Submits the scope and content of a digital learning item.
 
 2. DigitalLearningList:
    Key Responsibility: Displaying and managing a list of digital learning content.
-   Key Functions:
-   - generateTableForShowCurrent(): Generates table data based on selected filters.
-   - handleClone(): Clones an existing digital learning item.
-   - submitScope(): Submits the scope configuration for a digital learning item.
 
 Key Features:
 1. Multi-step configuration process (Basic Configuration, Questions Setup, Preview Questions)
@@ -2307,8 +1685,6 @@ Key Features:
 4. Preview functionality for created questions
 5. Integration with backend services for data submission and retrieval
 6. Complex state management for various configuration options
-
-
 
 3.11.25 Credential Overview
 Overview:
@@ -2320,17 +1696,6 @@ Key Responsibilities:
 3. Submit the password change request to the server.
 4. Display success or error messages based on the server response.
 
-Key Functions:
-1. onFinish(values): 
-   - Handles form submission
-   - Prepares the data for the password change request
-   - Calls the changePassword service function
-   - Displays success or error messages using SweetAlert2
-   - Reloads the page on successful password change
-
-2. onFinishFailed(errorInfo): 
-   - Handles form validation failures (currently empty, but can be used for additional error handling)
-
 Key Features:
 1. Uses Ant Design's Form and Input components for form handling and UI
 2. Implements password confirmation validation
@@ -2339,13 +1704,10 @@ Key Features:
 5. Provides user feedback using SweetAlert2 for success and error messages
 
 
-
-________________________________________
  
 4. Mobile App: Flutter
 
 4.1 Module wise overview
-
 4.1.1 Login Module
 Overview
 The login module is responsible for managing operations related to user authentication within the mobile application. It includes functionalities for logging in users, checking app versions, and handling various login-related operations.
@@ -2362,28 +1724,22 @@ Key Endpoints
 •	GET/asset-exists: Checks if the required assets are downloaded and available for use.
 •	DELETE/pda-delete: Deletes PDA files from the server.
 
-
 4.1.2 Verification Controller
 Overview
 The verification controller is responsible for managing operations related to user verification within the mobile application. It includes functionalities for checking login status, logging in users, and handling various verification-related operations.
 
 Key Responsibilities
 1.	Check Login Status: Checks the login status of the user and redirects them to the dashboard or login page accordingly.
-2.	Do Login: Logs in users based on their username and password.
-3.	Do Login with Sync File: Logs in users using a sync file.
-4.	Do Login with Sync File and Go to PDA Upload: Logs in users using a sync file and redirects them to the PDA upload page.
-5.	Check App Version: Checks if the app version is up-to-date and prompts the user to update if necessary.
-6.	Check Asset Exists: Checks if the required assets are downloaded and available for use.
-7.	Delete PDA from Server: Deletes PDA files from the server.
+2.	Login: Logs in users based on their username and password.
+3.	Login with Sync File: Logs in users using a sync file.
+4.	Check App Version: Checks if the app version is up-to-date and prompts the user to update if necessary.
+5.	Delete PDA from Server: Deletes PDA files from the server.
 
 Key Endpoints
 •	POST/login: Logs in users based on their username and password.
 •	GET/sync-file-login: Logs in users using a sync file.
-•	GET/sync-file-login-and-upload: Logs in users using a sync file and redirects them to the PDA upload page.
 •	GET/app-version: Checks if the app version is up-to-date.
-•	GET/asset-exists: Checks if the required assets are downloaded and available for use.
 •	DELETE /pda-delete: Deletes PDA files from the server.
-
 
 4.2.1 Outlet Module
 Overview
@@ -2399,8 +1755,6 @@ Key Endpoints
 •	GET/outlets: Retrieves a list of outlets and their corresponding information.
 •	GET/outlet/{id}: Retrieves detailed information about a specific outlet.
 •	POST/outlet: Creates a new outlet.
-•	PUT/outlet/{id}: Updates an existing outlet.
-•	DELETE/outlet/{id}: Deletes an outlet.
 •	POST/outlet-sync: Synchronizes outlet data with the server.
 
 
@@ -2417,8 +1771,6 @@ Key Endpoints
 •	GET/outlet-list: Retrieves a list of outlets and their corresponding information.
 •	GET/outlet-details/{id}: Retrieves detailed information about a specific outlet.
 •	POST/outlet-sync: Synchronizes outlet data with the server.
-
-
 4.2.3 Outlet Controller 
 Overview
 The outlet controller module is responsible for managing operations related to outlet management within the mobile application. It includes functionalities for handling outlet-related operations, providing outlet data to other modules, and synchronizing outlet data with the server.
@@ -2432,7 +1784,6 @@ Key Endpoints
 •	PUT/outlet/{id}: Updates an existing outlet.
 •	DELETE/outlet/{id}: Deletes an outlet.
 •	POST/outlet-sync: Synchronizes outlet data with the server.
-
 4.3 Preorder Module 
 Overview
 The Preorder module is a critical component of the mobile application, enabling users to select products, calculate promotions, and navigate to the examine UI to view the overall memo. This module is designed to streamline the preorder process, ensuring that users can efficiently and accurately place orders.
@@ -2441,26 +1792,16 @@ Key Responsibilities
 1.	Product Selection: Allows users to select products individually and calculate the total cost.
 2.	Promotion Calculation: Calculates the applicable promotions for each selected product, including different types of promotions such as normal, entire memo, multi-buy, and QPS.
 3.	Promotion Type: Determines the promotion type for each product, including payable promotion types such as absolute cash, percentage of value, product discount, and gift.
-4.	Examine UI Navigation: Navigates the user to the examine UI to view the overall memo.
-5.	Preorder Saving: Saves the preorder data, either to the PDA if the device is offline or to both the PDA and server if the device is online.
+4.	Preorder Saving: Saves the preorder data, either to the PDA if the device is offline or to both the PDA and server if the device is online.
 
 Key Endpoints
 •	GET /products: Retrieves a list of products and their corresponding information.
 •	GET /product/{id}: Retrieves detailed information about a specific product.
 •	POST /preorder: Creates a new preorder.
-•	PUT /preorder/{id}: Updates an existing preorder.
-•	DELETE /preorder/{id}: Deletes a preorder.
-•	GET /promotions: Retrieves a list of promotions and their corresponding information.
-•	GET /promotion/{id}: Retrieves detailed information about a specific promotion.
-•	POST /preorder/examine: Navigates the user to the examine UI to view the overall memo.
 •	POST /preorder/save: Saves the preorder data to the PDA and/or server.
 
 Key Utils
 •	promotion_utils.dart: Provides functions for calculating promotions and determining promotion types.
-
-Key Screens
-1.	Examine UI Screen: Displays the overall memo and allows users to view the preorder details.
-2.	Preorder Saving Screen: Saves the preorder data to the PDA and/or server.
 
 4.4 Memo Module 
 Overview
@@ -2485,15 +1826,6 @@ Key Dependencies
 •	Promotion Module: The Memo module relies on the Promotion module to determine promotion types and calculate promotion amounts.
 •	PDA Module: The Memo module relies on the PDA module to save memo data when the device is offline.
 •	Server Module: The Memo module relies on the Server module to save memo data when the device is online.
-
-Key Screens
-1.	Memo UI: The Memo UI screen allows users to select an outlet and view the corresponding memo.
-2.	Product Selection Screen: The Product Selection screen allows users to select products to add to the memo.
-3.	Memo Editing Screen: The Memo Editing screen allows users to edit the memo, including selecting products and calculating promotions.
-4.	Memo Saving Screen: The Memo Saving screen saves the updated memo data to the PDA and/or server.
-
-
-
 4.4 Delivery Module 
 Overview
 The Delivery module is an extension of the Preorder and Memo modules, allowing users to view and sync delivery data from the server for outlets where a load summary has already been created. This module is designed to streamline the delivery process, ensuring that users can efficiently and accurately confirm deliveries.
@@ -2518,14 +1850,6 @@ Key Dependencies
 •	PDA Module: The Delivery module relies on the PDA module to save delivery data when the device is offline.
 •	Server Module: The Delivery module relies on the Server module to save delivery data when the device is online.
 
-Key Screens
-1.	Delivery UI: The Delivery UI screen allows users to select an outlet and view the corresponding delivery data.
-2.	Outlet Selection Screen: The Outlet Selection screen allows users to select multiple outlets for bulk delivery.
-3.	Product Changes Screen: The Product Changes screen allows users to make changes to the products for the selected outlet.
-4.	Confirm Delivery Screen: The Confirm Delivery screen allows users to confirm the delivery for the selected outlet.
-5.	Save Delivery Screen: The Save Delivery screen saves the delivery data to the PDA and/or server.
-
-
 4.5.1 Attendance Module 
 Overview
 The attendance module is responsible for managing operations related to attendance management within the mobile application. It includes functionalities for managing attendance information, handling attendance-related operations, and providing attendance data to other modules. 
@@ -2540,9 +1864,7 @@ Key Endpoints
 •	GET/attendance: Retrieves a list of attendance records and their corresponding information.
 •	GET/attendance/{id}: Retrieves detailed information about a specific attendance record.
 •	POST/attendance: Creates a new attendance record.
-•	PUT/attendance/{id}: Updates an existing attendance record.
 •	POST/attendance-sync: Synchronizes attendance data with the server.
-
 
 4.5.2 Attendance UI
 Overview
@@ -2557,7 +1879,6 @@ Key Endpoints
 •	GET/attendance-list: Retrieves a list of attendance records and their corresponding information.
 •	GET/attendance-details/{id}: Retrieves detailed information about a specific attendance record.
 •	POST/attendance-sync: Synchronizes attendance data with the server.
-
 
 4.5.3 Attendance Controller
 Overview
@@ -2584,8 +1905,6 @@ Key Responsibilities
 Key Endpoints
 •	POST/check-in: Checks in attendance.
 •	POST/check-out: Checks out attendance.
-
-
 4.5.5 Geo Fencing
 Overview
 The geo fencing module is responsible for managing operations related to geo fencing attendance. It includes functionalities for handling geo fencing operations and providing geo fencing data to other modules.
@@ -2595,8 +1914,6 @@ Key Responsibilities
 
 Key Endpoints
 •	POST/geo-fencing: Manages geo fencing attendance.
-
-
 4.6.1 Summary Module
 Overview
 The summary module is responsible for managing operations related to sales summary management within the mobile application. It includes functionalities for managing sales summary information, handling sales summary-related operations, and providing sales summary data to other modules.
@@ -2609,8 +1926,6 @@ Key Responsibilities
 
 Key Endpoints
 •	GET/sales-summary: Retrieves a list of sales summary records and their corresponding information.
-
-
 4.6.2 Sales Summary UI
 Overview
 The sales summary UI module is responsible for providing a user-friendly interface for managing sales summary information. It includes functionalities for displaying sales summary lists, sales summary details, and handling sales summary-related operations.
@@ -2622,8 +1937,6 @@ Key Responsibilities
 
 Key Endpoints
 •	GET/sales-summary-list: Retrieves a list of sales summary records and their corresponding information.
-
-
 4.6.3 Sales Summary Controller
 Overview
 The sales summary controller module is responsible for managing operations related to sales summary management within the mobile application. It includes functionalities for handling sales summary-related operations, providing sales summary data to other modules, and synchronizing sales summary data with the server.
@@ -2697,8 +2010,6 @@ Key Responsibilities
 Key Endpoints
 •	GET/asset-installation: Retrieves asset installation information.
 •	POST/asset-installation: Creates a new asset installation record.
-•	PUT/asset-installation/{id}: Updates an existing asset installation record.
-•	DELETE/asset-installation/{id}: Deletes an asset installation record.
 
 4.7.6 Asset Pull Out
 Overview
@@ -2710,7 +2021,6 @@ Key Responsibilities
 Key Endpoints
 1.	GET/asset-pull-out: Retrieves asset pull out information.
 2.	POST/asset-pull-out: Creates a new asset pull out record.
-
 
 4.8 Sales Submit Module
 Overview
@@ -2761,8 +2071,6 @@ Key Endpoints
 7.	GET/leave-list: Retrieves leave data information.
 8.	POST/leave-submit: Synchronizes leave data with the server.
 
-
-
 4.8.3 Leave Controller
 Overview
 The leave controller module is responsible for managing operations related to leave management within the mobile application. It includes functionalities for handling leave-related operations, providing leave data to other modules, and synchronizing leave data with the server. 
@@ -2773,7 +2081,6 @@ Key Responsibilities
 Key Endpoints
 •	POST/leave-submit: Synchronizes leave data with the server.
 •	GET/leave-data: Retrieves leave data information.
-
 
 4.9.1 Allowance Management Module
 Overview
@@ -2786,7 +2093,6 @@ Key Responsibilities
 Key Endpoints
 •	POST/allowance-submit: Synchronizes allowance data with the server.
 •	GET/allowance-data: Retrieves allowance data information.
-
 
 4.9.2 Allowance UI
 Overview
@@ -2811,9 +2117,6 @@ Key Responsibilities
 Key Endpoints
 •	GET/movement-list: Retrieves movement data information.
 •	POST/movement-submit: Creates a new movement record.
-•	PUT/movement/{id}: Updates an existing movement record.
-•	DELETE/movement/{id}: Deletes a movement record.
-
 
 4.9.4 TA/DA Management
 Overview
